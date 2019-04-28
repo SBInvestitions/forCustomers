@@ -1,2 +1,19 @@
+body {
+    font-family: TimesNewRoman, 'Times New Roman', Times;
+}
 .glider img {
+}
+
+.block {
+    display:inline-block;
+    width: 980px;
+    padding: 20px 10px 30px 10px;
+    text-align: center;
+}
+
+.block.green {
+    background-color: #829645;
+}
+.block.gray {
+    background-color: #7383a3;
 }

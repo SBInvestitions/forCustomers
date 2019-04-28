@@ -1,9 +1,11 @@
+let sitesMap = null;
+let polygons = null;
 const sites = [
   {
     id: 1,
     name: 'Khauki',
     area: '',
-    center: [],
+    center: [62.338199, 32.241964],
     points: [
       [62.3615, 32.2400],
       [62.3420, 32.2640],
@@ -163,3 +165,89 @@ const sites = [
     deposits: []
   }
 ];
+
+function drawMap() {
+  sitesMap = new ymaps.Map("map", {
+    center: sites[0].center,
+    zoom: 13
+  });
+  drawSites();
+}
+
+function drawSites() {
+  polygons = [];
+  sites.forEach((site) => {
+    addSite(site);
+    site.deposits.forEach((deposite) => {
+      addSite(deposite);
+    })
+  });
+}
+
+function addSite(site) {
+  const myPolygon = new ymaps.GeoObject({
+    geometry: {
+      // Тип геометрии - "Многоугольник".
+      type: "Polygon",
+      // Указываем координаты вершин многоугольника.
+      coordinates: [
+        [...site.points]
+      ],
+      // Задаем правило заливки внутренних контуров по алгоритму "nonZero".
+      fillRule: "nonZero",
+    },
+    properties: {
+      balloonContent: "Многоугольник"
+    },
+  }, {
+    // Описываем опции геообъекта.
+    // Цвет заливки.
+    fillColor: '#FFFFFF',
+    // Цвет обводки.
+    strokeColor: '#0000FF',
+    // Общая прозрачность (как для заливки, так и для обводки).
+    opacity: 0.5,
+    // Ширина обводки.
+    strokeWidth: 5,
+    // Стиль обводки.
+    strokeStyle: 'shortdash'
+  });
+  polygons.push(myPolygon);
+  sitesMap.geoObjects.add(myPolygon);
+}
+
+ymaps.ready(drawMap);
+
+/*
+// Создаем многоугольник, используя вспомогательный класс Polygon.
+    var myPolygon = new ymaps.Polygon([
+        // Указываем координаты вершин многоугольника.
+        // Координаты вершин внешнего контура.
+        [
+            [55.75, 37.50],
+            [55.80, 37.60],
+            [55.75, 37.70],
+            [55.70, 37.70],
+            [55.70, 37.50]
+        ],
+        // Координаты вершин внутреннего контура.
+        [
+            [55.75, 37.52],
+            [55.75, 37.68],
+            [55.65, 37.60]
+        ]
+    ], {
+        // Описываем свойства геообъекта.
+        // Содержимое балуна.
+        hintContent: "Многоугольник"
+    }, {
+        // Задаем опции геообъекта.
+        // Цвет заливки.
+        fillColor: '#00FF0088',
+        // Ширина обводки.
+        strokeWidth: 5
+    });
+
+    // Добавляем многоугольник на карту.
+    myMap.geoObjects.add(myPolygon);
+ */
