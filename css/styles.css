@@ -1,7 +1,8 @@
 body {
     font-family: TimesNewRoman, 'Times New Roman', Times;
 }
-.glider img {
+.glider-contain {
+    display: none;
 }
 
 .block {

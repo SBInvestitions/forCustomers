@@ -1,5 +1,20 @@
 window.addEventListener('load', function(){
-  new Glider(document.querySelector('.glider'), {
+  const gliderContainer1 = document.querySelector('.glider-contain1');
+  const gliderContainer2 = document.querySelector('.glider-contain2');
+  gliderContainer1.style.display = 'block';
+  gliderContainer2.style.display = 'block';
+  const glider1 = document.querySelector('.glider1');
+  const glider2 = document.querySelector('.glider2');
+  new Glider(glider1, {
+    slidesToShow: 1,
+    dots: '.dots',
+    draggable: true,
+    arrows: {
+      prev: '.glider-prev',
+      next: '.glider-next'
+    }
+  });
+  new Glider(glider2, {
     slidesToShow: 1,
     dots: '.dots',
     draggable: true,
