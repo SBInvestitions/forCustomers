@@ -10,8 +10,8 @@ window.addEventListener('load', function(){
     dots: '.dots',
     draggable: true,
     arrows: {
-      prev: '.glider-prev',
-      next: '.glider-next'
+      prev: '.glider-prev-1',
+      next: '.glider-next-1'
     }
   });
   new Glider(glider2, {
@@ -19,8 +19,8 @@ window.addEventListener('load', function(){
     dots: '.dots',
     draggable: true,
     arrows: {
-      prev: '.glider-prev',
-      next: '.glider-next'
+      prev: '.glider-prev-2',
+      next: '.glider-next-2'
     }
   });
 });

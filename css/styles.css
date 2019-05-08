@@ -5,6 +5,10 @@ body {
     display: none;
 }
 
+.glider-next, .glider-prev {
+    top: 45% !important;
+}
+
 .block {
     display:inline-block;
     width: 980px;
